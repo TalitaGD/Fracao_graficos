@@ -1,0 +1,53 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    function desenhaRetangulo(x, y, largura, altura, cor) {
+        var tela = document.querySelector('canvas');
+        var pincel = tela.getContext('2d');
+
+        pincel.fillStyle=cor;
+        pincel.fillRect(x,y, largura, altura);
+        pincel.strokeStyle='black';
+        pincel.strokeRect(x,y, largura, altura);
+    }
+
+    function desenhaTexto(x , y, texto) {
+        var tela = document.querySelector('canvas');
+        var pincel = tela.getContext('2d');
+
+        pincel.font='15px Georgia';
+        pincel.fillStyle='black';
+        pincel.fillText(texto, x, y);    
+    }
+
+    function desenhaBarra(x, y, serie, cores, texto) {
+
+        desenhaTexto(x, y - 10, texto);
+
+        var somaAltura = 0;
+        for (var i = 0; i < serie.length; i++) {
+            var altura = serie[i];
+            desenhaRetangulo(x, y + somaAltura, 50, altura, cores[i]);
+            somaAltura = somaAltura + altura;
+        }
+    }
+
+    var cores = ['blue','green','yellow', 'red'];
+    var serie2016 = [50,25,20,5];
+    var serie2017 = [65,20,13,2];
+    var serie2018 = [40,20,15,25];
+    var serie2019 = [70,20,5,5];
+    var serie2020 = [65,20,13,2];
+    var serie2021 = [40,40,15,5];
+    var serie2022 = [30,20,40,10];
+
+    desenhaBarra(50, 50, serie2016, cores, '2016');
+    desenhaBarra(150, 50, serie2017, cores, '2017');
+    desenhaBarra(250, 50, serie2018, cores, '2018');
+    desenhaBarra(350, 50, serie2019, cores, '2019');
+    desenhaBarra(450, 50, serie2021, cores, '2020');
+    desenhaBarra(550, 50, serie2022, cores, '2021');
+    desenhaBarra(150, 50, serie2023, cores, '2022');
+
+</script>
